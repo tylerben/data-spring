@@ -1,4 +1,5 @@
 const { DateTime, Interval } = require('luxon');
+const { v4: uuidv4 } = require('uuid');
 
 export type FieldTypes = 'date' | 'number' | string;
 export type Intervals = 'hour' | 'day' | 'month' | 'year';
@@ -27,40 +28,6 @@ export interface iIntervals {
   decade: string;
   [index: string]: string;
 }
-
-export const config: iConfig[] = [
-  {
-    id: 'date',
-    type: 'date',
-    interval: 'hour',
-    min: '2016-01-01 00:00:00',
-    max: '2020-12-31 23:59:00',
-  },
-  { id: 'passengers', type: 'number', min: 0, max: 10 },
-  {
-    id: 'operator',
-    type: 'string',
-    values: [
-      'Cyan Cab',
-      'Teal Cab',
-      'Speckled Cab',
-      'Orange Cab',
-      'Brown Cab',
-      'Green Cab',
-      'Yellow Cab',
-      'Black Cab',
-      'Purple Cab',
-      'Blue Cab',
-      'Clear Cab',
-      'Rainbow Cab',
-      'White Cab',
-      'Red Cab',
-      'Grey Cab',
-    ],
-  },
-  { id: 'distance', type: 'number', min: 0, max: 100 },
-  { id: 'cost', type: 'number', min: 0, max: 80 },
-];
 
 const mappedIntervals: iIntervals = {
   milliseconds: 'milliseconds',
@@ -116,7 +83,9 @@ export const DataSpring = (config: iConfig[]) => {
       .fill({})
       .map((_, i) => {
         return config.reduce((acc: obj, curr) => {
-          if (curr.type === 'date') {
+          if (curr.type === 'id') {
+            acc[curr.id] = uuidv4();
+          } else if (curr.type === 'date') {
             acc[dateField.id] = baseDate
               .plus({
                 [mappedIntervals[dateField.interval!]]: i,
@@ -125,7 +94,13 @@ export const DataSpring = (config: iConfig[]) => {
           } else if (curr.type === 'number') {
             const min = +curr.min!;
             const max = +curr.max!;
-            acc[curr.id] = Math.floor(Math.random() * (max - min + 1) + min);
+            if (min === 0 && max === 1) {
+              const val = Math.random();
+              acc[curr.id] = val;
+            } else {
+              const val = Math.random() * (max - min + 1) + min;
+              acc[curr.id] = Math.floor(val);
+            }
           } else if (curr.type === 'string') {
             acc[curr.id] = curr.values![
               Math.floor(Math.random() * curr.values!.length)
