@@ -31,6 +31,7 @@
     "trailingComma": "es5"
   },
   "name": "data-spring",
+  "description": "Seamlessly generate fake datasets.",
   "author": "Ben Tyler",
   "module": "dist/data-spring.esm.js",
   "size-limit": [
