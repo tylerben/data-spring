@@ -41,5 +41,5 @@ data-spring create config.json output.json
 - Create a new config file based off of the starting template called `config.json` in the current working directory.
 
 ```shell
-data-spring create config.json
+data-spring config config.json
 ```
