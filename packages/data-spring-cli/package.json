@@ -1,7 +1,7 @@
 {
   "name": "data-spring-cli",
   "description": "Data Spring command-line interface for generating fake datasets.",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "main": "index.js",
   "author": "tylerben <ben@stae.co>",
   "license": "MIT",
@@ -21,7 +21,7 @@
     "data-spring": "./dist/cli.js"
   },
   "dependencies": {
-    "data-spring": "link:../data-spring",
+    "data-spring": "^0.1.0",
     "yargonaut": "^1.1.4",
     "yargs": "^16.0.3"
   },
