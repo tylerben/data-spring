@@ -18,7 +18,9 @@ const SampleConfig: iConfig[] = [
   {
     id: "date",
     type: "date",
-    interval: "hour",
+    interval: {
+      type: "hour",
+    },
     min: "2016-01-01 00:00:00",
     max: "2020-12-31 23:59:00",
   },
