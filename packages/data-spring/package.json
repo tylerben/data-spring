@@ -14,6 +14,7 @@
     "start": "tsdx watch",
     "build": "tsdx build",
     "test": "tsdx test",
+    "test:watch": "tsdx test --watch",
     "lint": "tsdx lint",
     "prepare": "tsdx build",
     "size": "size-limit",
@@ -29,6 +30,11 @@
     "semi": true,
     "singleQuote": true,
     "trailingComma": "es5"
+  },
+  "jest": {
+    "setupFilesAfterEnv": [
+      "jest-extended"
+    ]
   },
   "name": "data-spring",
   "description": "Seamlessly generate fake datasets.",
@@ -46,7 +52,9 @@
   ],
   "devDependencies": {
     "@size-limit/preset-small-lib": "^4.6.0",
+    "@types/jest": "^26.0.19",
     "husky": "^4.3.0",
+    "jest-extended": "^0.11.5",
     "size-limit": "^4.6.0",
     "tsdx": "^0.14.0",
     "tslib": "^2.0.1",

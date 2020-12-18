@@ -9,10 +9,10 @@ export interface iConfig {
   id: string;
   type: FieldTypes;
   interval?: Intervals;
+  recordsPerInterval?: number;
   min?: number | string;
   max?: number | string;
   values?: string[] | number[];
-  [index: string]: any;
 }
 
 export interface iIntervals {
@@ -70,6 +70,7 @@ export const DataSpring = (config: iConfig[]) => {
     const minDate = dateField.min as string;
     const maxDate = dateField.max as string;
     const interval = dateField.interval;
+    const recPerInterval = dateField.recordsPerInterval || 1;
 
     const length = calcInterval(
       minDate as string,
@@ -78,17 +79,18 @@ export const DataSpring = (config: iConfig[]) => {
     );
 
     const baseDate = DateTime.fromJSDate(new Date(minDate));
-
-    return Array(length)
+    let counter = 0;
+    return Array((length + 1) * recPerInterval)
       .fill({})
       .map((_, i) => {
+        if (i !== 0 && i % recPerInterval === 0) counter = counter + 1;
         return config.reduce((acc: obj, curr) => {
           if (curr.type === 'id') {
             acc[curr.id] = uuidv4();
           } else if (curr.type === 'date') {
             acc[dateField.id] = baseDate
               .plus({
-                [mappedIntervals[dateField.interval!]]: i,
+                [mappedIntervals[dateField.interval!]]: counter,
               })
               .toString();
           } else if (curr.type === 'number') {
