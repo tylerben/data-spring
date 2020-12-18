@@ -55,7 +55,7 @@ const data = DataSpring(config);
 
 The above example will generate something that looks roughly like...
 
-```json
+```js
 [
   {
     "id": "6b41a4ed-6319-4c23-83c7-32eb5a655e7f",
