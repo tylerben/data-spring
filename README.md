@@ -1,6 +1,6 @@
-# Data Spring
+# Data Spring - Beta
 
-Data Spring is designed streamline the process of generating fake datasets. Sure a lot of libraries already exist to do this, but I was not able to find a solution that was well tailored to generating large time series datasets. Data Spring is designed with the use case of generating datasets for prototyping data driven dashboards and data visualizations.
+Data Spring is designed to streamline the process of generating fake datasets. Sure a lot of libraries already exist to do this, but I was not able to find a solution that was well tailored to generating large time series datasets. Data Spring is designed with the use case of generating datasets for prototyping data driven dashboards and data visualizations.
 
 Data Spring is available both as a library for use in other applications as well as a standalone CLI. Instructions for using both are included below
 
