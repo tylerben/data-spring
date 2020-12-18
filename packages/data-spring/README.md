@@ -1,61 +1,78 @@
 # Data Spring
 
-Generate fake datasets with ease.
+> :warning: Data Spring is still very much in an experimental and beta state. Features and implementation can and likely will change.
+
+Data Spring generates fake datasets geared towards dashboards and data visualizations. Sure a lot of libraries already exist for generating fake data, but I was not able to find a solution that was well tailored for these use cases. Data Spring is designed with the use case of generating datasets for prototyping data driven dashboards and data visualizations. As a result, it is fast and easy to create things like large time series datasets using Data Spring.
+
+Data Spring is available both as a JavaScript library as well as a standalone CLI. Instructions for using both are included below
 
 ## Getting Started
 
-1. Install the library
+Install the package using yarn or npm.
 
 ```shell
+# yarn
+yarn add data-spring
+
+#npm
 npm install data-spring
 ```
 
-2. Integrate it into your project
+After installing, add it to your project where you want to generate data. For instance, it can easily be plugged into an API endpoint or directly into a React component. The below snippet gives you the rough idea of usage.
 
-The `DataSpring` function is very straight-forward. It expects a configuration argument which as an array of config objects.
+The config argument is how you define the shape of your dataset (i.e. creating fields and possible values for them).
 
 ```js
-const { DataSpring } = require('data-spring');
+import { DataSpring } from 'data-spring';
 
+// config object that is passed to data spring
+// aka how you want your data to look
 const config = [
-  { id: 'rec_id', type: 'id' },
+  { id: 'rec_id', type: 'id' }, // auto generates a uuid
   {
-    id: 'month',
+    id: 'date',
     type: 'date',
-    interval: 'month',
+    interval: {
+      // i.e. 'hour' | 'day' | 'month' | 'year'
+      type: 'month',
+      // # of records to generate before stepping to next interval
+      recordsPerInterval: 2,
+    },
     min: '2020-01-01 00:00:00',
-    max: '2020-10-01 00:00:00',
+    max: '2020-12-01 00:00:00',
   },
   {
     id: 'department',
     type: 'string',
-    values: ['Transportation', 'Evironment', 'Health', 'Parks'],
+    values: ['Transportation', 'Environment', 'Health', 'Parks'],
   },
   {
     id: 'budget',
     type: 'number',
-    min: 30000,
+    min: 10000,
     max: 100000,
   },
 ];
 
-// Generate the dataset
-const dataset = DataSpring(config);
+const data = DataSpring(config);
+```
 
-// expected output will look something like
-// [
-//   {
-//     rec_id: '0eaa8c20-e008-42bd-9675-f922941e9d98',
-//     month: '2020-01-01T00:00:00.000-08:00',
-//     department: 'Evironment',
-//     budget: 62711
-//   },
-//   {
-//     rec_id: '55fb444f-1f6c-41e6-a32b-957c684d33c4',
-//     month: '2020-02-01T00:00:00.000-08:00',
-//     department: 'Parks',
-//     budget: 48522
-//   },
-//   ...more records
-// ]
+The above example will generate something that looks roughly like...
+
+```js
+[
+  {
+    id: '6b41a4ed-6319-4c23-83c7-32eb5a655e7f',
+    date: '2020-01-01T01:00:00.000-08:00',
+    department: 'Environment',
+    budget: 45000,
+  },
+  {
+    id: '6b41a4ed-6319-4c23-83c7-32eb5a655e7f',
+    date: '2020-01-01T01:00:00.000-08:00',
+    department: 'Transportation',
+    budget: 32000,
+  },
+  // 22 more records
+];
 ```

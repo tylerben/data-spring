@@ -37,7 +37,7 @@
     ]
   },
   "name": "data-spring",
-  "description": "Seamlessly generate fake datasets.",
+  "description": "Data Spring generates fake datasets geared towards dashboards and data visualizations. ",
   "author": "tylerben <tylerben14@gmail.com>",
   "repository": "git://github.com/tylerben/data-spring.git",
   "module": "dist/data-spring.esm.js",

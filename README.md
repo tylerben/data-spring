@@ -1,10 +1,14 @@
-# Data Spring - Beta
+# Data Spring
 
-Data Spring is designed to streamline the process of generating fake datasets. Sure a lot of libraries already exist to do this, but I was not able to find a solution that was well tailored to generating large time series datasets. Data Spring is designed with the use case of generating datasets for prototyping data driven dashboards and data visualizations.
+> :warning: Data Spring is still very much in an experimental and beta state. Features and implementation can and likely will change.
 
-Data Spring is available both as a library for use in other applications as well as a standalone CLI. Instructions for using both are included below
+Data Spring generates fake datasets geared towards dashboards and data visualizations. Sure a lot of libraries already exist for generating fake data, but I was not able to find a solution that was well tailored for these use cases. Data Spring is designed with the use case of generating datasets for prototyping data driven dashboards and data visualizations. As a result, it is fast and easy to create things like large time series datasets using Data Spring.
 
-## Getting Started with data-spring
+Data Spring is available both as a JavaScript library as well as a standalone CLI. Instructions for using both are included below
+
+## data-spring Library
+
+### Getting Started
 
 Install the package using yarn or npm.
 
@@ -16,7 +20,9 @@ yarn add data-spring
 npm install data-spring
 ```
 
-After installing, add it to your project where you want to generate data. For instance, it can easily be plugged into an API endpoint or directly into a React component. The below snippet gives you the rough idea.
+After installing, add it to your project where you want to generate data. For instance, it can easily be plugged into an API endpoint or directly into a React component. The below snippet gives you the rough idea of usage.
+
+The config argument is how you define the shape of your dataset (i.e. creating fields and possible values for them).
 
 ```js
 import { DataSpring } from "data-spring";
@@ -58,24 +64,26 @@ The above example will generate something that looks roughly like...
 ```js
 [
   {
-    "id": "6b41a4ed-6319-4c23-83c7-32eb5a655e7f",
-    "date": "2020-01-01T01:00:00.000-08:00",
-    "department": "Environment",
-    "budget": 45000
+    id: "6b41a4ed-6319-4c23-83c7-32eb5a655e7f",
+    date: "2020-01-01T01:00:00.000-08:00",
+    department: "Environment",
+    budget: 45000,
   },
   {
-    "id": "6b41a4ed-6319-4c23-83c7-32eb5a655e7f",
-    "date": "2020-01-01T01:00:00.000-08:00",
-    "department": "Transportation",
-    "budget": 32000
-  }
+    id: "6b41a4ed-6319-4c23-83c7-32eb5a655e7f",
+    date: "2020-01-01T01:00:00.000-08:00",
+    department: "Transportation",
+    budget: 32000,
+  },
   // 22 more records
-]
+];
 ```
 
-## Getting Started with data-spring-cli
+## data-spring CLI
 
-The Data Spring command-line interface (CLI) can be used to locally generate fake datasets. The CLI reads from a specified JSON config file and spits out the generated JSON data to a specified output file. Reference the config format in the data-spring example above.
+### Getting Started
+
+The Data Spring command-line interface (CLI) can be used generate fake datasets from a provided json config file and output the results to a specified json file.
 
 Install the package globally using yarn or npm.
 
@@ -86,6 +94,45 @@ yarn global add data-spring-cli
 #npm
 npm install data-spring-cli -g
 ```
+
+Create a `config.json` file in your project that looks something like the following. **Tip:** You can run `data-spring config <config-file>` to generate a boilerplate config file.
+
+The config file is how you define the shape of your dataset (i.e. creating fields and possible values for them).
+
+```json
+const config = [
+  { "id": "rec_id", "type": "id" },
+  {
+    "id": "date",
+    "type": "date",
+    "interval": {
+      "type": "month",
+      "recordsPerInterval": 2,
+    },
+    "min": "2020-01-01 00:00:00",
+    "max": "2020-12-01 00:00:00",
+  },
+  {
+    "id": "department",
+    "type": "string",
+    "values": ["Transportation", "Environment", "Health", "Parks"],
+  },
+  {
+    "id": "budget",
+    "type": "number",
+    "min": 10000,
+    "max": 100000,
+  },
+];
+```
+
+Next, run the cli using your config file, passing the path to your config file as well as the path to where you want the data to be output.
+
+```shell
+data-spring <config-file> <output-file>
+```
+
+That's it! Open up the output file and you should see your generated dataset.
 
 ### CLI Commands
 
