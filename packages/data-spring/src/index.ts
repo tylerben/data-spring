@@ -8,7 +8,10 @@ export type obj = { [index: string]: any };
 export interface iConfig {
   id: string;
   type: FieldTypes;
-  interval?: Intervals;
+  interval?: {
+    type: Intervals;
+    recordsPerInterval?: number;
+  };
   recordsPerInterval?: number;
   min?: number | string;
   max?: number | string;
@@ -69,13 +72,13 @@ export const DataSpring = (config: iConfig[]) => {
   if (dateField) {
     const minDate = dateField.min as string;
     const maxDate = dateField.max as string;
-    const interval = dateField.interval;
-    const recPerInterval = dateField.recordsPerInterval || 1;
+    const intervalType = dateField.interval!.type!;
+    const recPerInterval = dateField.interval?.recordsPerInterval || 1;
 
     const length = calcInterval(
       minDate as string,
       maxDate! as string,
-      interval!
+      intervalType!
     );
 
     const baseDate = DateTime.fromJSDate(new Date(minDate));
@@ -90,7 +93,7 @@ export const DataSpring = (config: iConfig[]) => {
           } else if (curr.type === 'date') {
             acc[dateField.id] = baseDate
               .plus({
-                [mappedIntervals[dateField.interval!]]: counter,
+                [mappedIntervals[intervalType]]: counter,
               })
               .toString();
           } else if (curr.type === 'number') {

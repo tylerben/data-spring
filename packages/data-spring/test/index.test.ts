@@ -16,8 +16,10 @@ const config: iConfig[] = [
   {
     id: 'date',
     type: 'date',
-    interval: 'hour',
-    recordsPerInterval: 5,
+    interval: {
+      type: 'hour',
+      recordsPerInterval: 5,
+    },
     min: '2016-01-01 00:00:00',
     max: '2016-01-01 02:00:00',
   },
