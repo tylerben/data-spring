@@ -38,7 +38,8 @@
   },
   "name": "data-spring",
   "description": "Seamlessly generate fake datasets.",
-  "author": "Ben Tyler",
+  "author": "tylerben <tylerben14@gmail.com>",
+  "repository": "git://github.com/tylerben/data-spring.git",
   "module": "dist/data-spring.esm.js",
   "size-limit": [
     {
