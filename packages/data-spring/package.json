@@ -65,5 +65,20 @@
     "luxon": "^1.25.0",
     "uuid": "^8.3.1"
   },
-  "gitHead": "a90c0f339dce4a27d73ccba8d1b46567951fda39"
+  "gitHead": "a90c0f339dce4a27d73ccba8d1b46567951fda39",
+  "keywords": [
+    "data",
+    "data generator",
+    "fake data",
+    "typescript",
+    "javascript",
+    "data-spring",
+    "generator",
+    "mock data",
+    "mock",
+    "dummy data",
+    "dummy",
+    "dashboard",
+    "data visualization"
+  ]
 }
