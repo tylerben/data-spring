@@ -1,6 +1,6 @@
 # Data Spring
 
-> :warning: Data Spring is still very much in an experimental and beta state. Features and implementation can and likely will change.
+> :warning: Data Spring is still very much in an experimental and beta state. As a result, features and implementation likely will change.
 
 Data Spring generates fake datasets geared towards dashboards and data visualizations. Sure a lot of libraries already exist for generating fake data, but I was not able to find a solution that was well tailored for these use cases. Data Spring is designed with the use case of generating datasets for prototyping data driven dashboards and data visualizations. As a result, it is fast and easy to create things like large time series datasets using Data Spring.
 
