@@ -2,7 +2,7 @@
   "name": "data-spring-cli",
   "description": "Data Spring generates fake datasets geared towards dashboards and data visualizations. ",
   "repository": "git://github.com/tylerben/data-spring.git",
-  "version": "0.1.9",
+  "version": "0.1.10",
   "main": "index.js",
   "author": "tylerben <tylerben14@gmail.com>",
   "license": "MIT",
@@ -22,7 +22,7 @@
     "data-spring": "./dist/cli.js"
   },
   "dependencies": {
-    "data-spring": "^0.1.9",
+    "data-spring": "^0.1.10",
     "yargonaut": "^1.1.4",
     "yargs": "^16.0.3"
   },
