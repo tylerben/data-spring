@@ -129,7 +129,7 @@ const config = [
 Next, run the cli using your config file, passing the path to your config file as well as the path to where you want the data to be output.
 
 ```shell
-data-spring <config-file> <output-file>
+data-spring create <config-file> <output-file>
 ```
 
 That's it! Open up the output file and you should see your generated dataset.
