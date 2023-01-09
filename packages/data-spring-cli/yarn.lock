@@ -88,10 +88,10 @@ create-require@^1.1.0:
   resolved "https://registry.yarnpkg.com/create-require/-/create-require-1.1.1.tgz#c1d7e8f1e5f6cfc9ff65f9cd352d37348756c333"
   integrity sha512-dcKFX3jn0MpIaXjisoRvexIJVEKzaq7z2rZKxf+MSr9TkdmHmsU4m2lcLojrj/FHl8mk5VxMmYA+ftRkP/3oKQ==
 
-data-spring@^0.1.4:
-  version "0.1.4"
-  resolved "https://registry.yarnpkg.com/data-spring/-/data-spring-0.1.4.tgz#e07c7e526af362f566dfa79169880dda5d14117b"
-  integrity sha512-k7fWao23cBG+rPqJOsTsjNin+asowFkOy3YT/biGwgnZZ7MvfLr/6EmfJ4OJYnREWrrsTPtrJntRHNMtuS+0rg==
+data-spring@^0.1.11:
+  version "0.1.11"
+  resolved "https://registry.yarnpkg.com/data-spring/-/data-spring-0.1.11.tgz#e6feb7696011a30f01ef4833e71077ad508acd30"
+  integrity sha512-44OC9hkAaK4uNNSDlc4s8PW6djQy/EKRzeCJDv79JZ5saHZUMFLW90EBu4I5FxDkBjFIMjuNLA5tKED0D0ZHDA==
   dependencies:
     luxon "^1.25.0"
     uuid "^8.3.1"
@@ -139,9 +139,9 @@ is-fullwidth-code-point@^3.0.0:
   integrity sha512-zymm5+u+sCsSWyD9qNaejV3DFvhCKclKdizYaJUuHA83RLjb7nSuGnddCHGv0hk+KY7BMAlsWeK4Ueg6EV6XQg==
 
 luxon@^1.25.0:
-  version "1.25.0"
-  resolved "https://registry.yarnpkg.com/luxon/-/luxon-1.25.0.tgz#d86219e90bc0102c0eb299d65b2f5e95efe1fe72"
-  integrity sha512-hEgLurSH8kQRjY6i4YLey+mcKVAWXbDNlZRmM6AgWDJ1cY3atl8Ztf5wEY7VBReFbmGnwQPz7KYJblL8B2k0jQ==
+  version "1.28.1"
+  resolved "https://registry.yarnpkg.com/luxon/-/luxon-1.28.1.tgz#528cdf3624a54506d710290a2341aa8e6e6c61b0"
+  integrity sha512-gYHAa180mKrNIUJCbwpmD0aTu9kV0dREDrwNnuyFAsO1Wt0EVYSZelPnJlbj9HplzXX/YWXHFTL45kvZ53M0pw==
 
 make-error@^1.1.1:
   version "1.3.6"
